@@ -11,17 +11,19 @@
     <style>
         body {
             font-family: 'Arimo', sans-serif;
-            background-color: #f0f0f0;
-            background-image: linear-gradient(to right, #ff9933, #ff5050);
             margin: 0;
             padding: 0;
+            background-image: url('/static/images/img.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat; 
         }
 
         .container {
             width: 50%;
             margin: 50px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8); 
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -72,8 +74,6 @@
 <body>
     <div class="container">
         <h1>House Price Prediction</h1>
-
-        <!-- Main Input For Receiving Query to our ML -->
         <form action="{{ url_for('predict') }}" method="post">
             <input type="text" name="CRIM" placeholder="MedInc" required="required" /><br>
             <input type="text" name="ZN" placeholder="HouseAge" required="required" /><br>
@@ -87,9 +87,6 @@
 
             <button type="submit">Predict</button>
         </form>
-
-        
-
 
         <div class="prediction-text">
             {{ prediction_text }}
