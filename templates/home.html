@@ -1,1 +1,100 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #f0f0f0;
+            background-image: linear-gradient(to right, #ff9933, #ff5050);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 80%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .prediction-text {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>House Price Prediction</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="CRIM" placeholder="MedInc" required="required" /><br>
+            <input type="text" name="ZN" placeholder="HouseAge" required="required" /><br>
+            <input type="text" name="INDUS" placeholder="AvgRooms" required="required" /><br>
+            <input type="text" name="CHAS" placeholder="AvgBedrms" required="required" /><br>
+            <input type="text" name="NOX" placeholder="Population" required="required" /><br>
+            <input type="text" name="RM" placeholder="AvgOccup" required="required" /><br>
+            <input type="text" name="Age" placeholder="Latitude" required="required" /><br>
+            <input type="text" name="DIS" placeholder="Longitude" required="required" /><br>
+            <br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        
+
+
+        <div class="prediction-text">
+            {{ prediction_text }}
+        </div>
+    </div>
+</body>
+
+</html>
